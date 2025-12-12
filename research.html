@@ -17,18 +17,31 @@
       margin-inline: auto;
       padding-inline: 1rem;
     }
-    .column {
-  float: left;
-  width: 50%;
+.content {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
 }
+</style>
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
 }
-  </style>
+</script>
 </head>
 
 <body>
@@ -48,9 +61,8 @@
   <main>
     <h1>Research</h1>
 <!-- Write content here -->
-<div class="row">
-  <div class="column">
-    <h2>Scholarship</h2>
+<button type="button" class="collapsible">Scholarship</button>
+<div class="content">
 <p>&ldquo;Distributional Semantics, Holism, and the Instability of Meaning.&rdquo; With Nat Hansen, Jumbly Grindrod. Forthcoming in <em>Communicating with AI: Philosophical Perspective</em>, Oxford University Press.</p>
 
 <p>&ldquo;The Eclectic Reader.&rdquo; With James English. <em>Journal of Cultural Analytics</em>. August 2025.</p>
@@ -70,9 +82,9 @@
 <p>&ldquo;A Corpus Study of &ldquo;Know&rdquo;: On the Verification of Philosophers&rsquo; Frequency Claims about Language.&rdquo; With Nat Hansen, Kathryn Francis. <em>Episteme</em>. 02 July 2019. Cambridge University Press. pp. 1-27.</p>
 
 <p>&ldquo;Popularity/Prestige.&rdquo; Pamphlets of the Stanford Literary Lab. October 2018.</p>
-  </div>
-  <div class="column">
-<h2>REVIEWS AND PUBLIC WRITING</h2>
+</div>
+<button type="button" class="collapsible">Reviews and Public Writing</button>
+<div class="content">
 
 <p>&ldquo;Review of <em>The Digital Black Atlantic</em>, eds. Roopika Risam, Kelly Baker Josephs.&rdquo; <em>African American Review</em>. Volume 57, Number 1, Spring 2024.</p>
 
@@ -89,7 +101,7 @@
 <p>&ldquo;Who Cares About Literary Prizes?&rdquo; With Alexander Manshel, Laura B. McGrath. <em>Public Books</em>. 03 Sept 2019.</p>
 
 <p>&ldquo;Review of <em>Jazz Internationalism: Literary Afro-Modernism and the Cultural Politics of Black Music</em> by John Lowney.&rdquo; <em>African American Review</em>. Vol. 51, No 4. Winter 2018.</p>
-  </div>
+</div>
     <style>
       html {
         scroll-behavior: smooth;
